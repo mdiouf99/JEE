@@ -37,27 +37,17 @@ public class AddUser extends HttpServlet
 	{
 	    AddUserForm form = new AddUserForm(request);
 	    
-	    if(form.ajouter())
-	    	response.sendRedirect("login");
-	    else {
-	    	request.setAttribute("utilisateur", form.getUtilisateur());
+	   	    form.ajouter()
+	            request.setAttribute("utilisateur", form.getUtilisateur());
 		    request.setAttribute("status", form.getStatus());
 		    request.setAttribute("statusMessage", form.getStatusMessage());
 		    request.setAttribute("erreurs", form.getErreurs());
 		    getServletContext().getRequestDispatcher(VUE_AJOUT_UTILISATEUR).forward(request,  response);
-
-	    }
-
-
-		// String nom = request.getParameter("nom");
-		// String prenom = request.getParameter("prenom");
-		// String login = request.getParameter("login");
-		// String password = request.getParameter("password");
-	    
-		// Utilisateur utilisateur = new Utilisateur(nom, prenom, login, password);
-		// UtilisateurDao.ajouter(utilisateur);
-	    
-		// response.sendRedirect(request.getContextPath());
+		    String nom = request.getParameter("nom");
+		    String prenom = request.getParameter("prenom");
+		    String login = request.getParameter("login");
+		    String password = request.getParameter("password");
+	            response.sendRedirect(request.getContextPath());
 	}
 
 }
